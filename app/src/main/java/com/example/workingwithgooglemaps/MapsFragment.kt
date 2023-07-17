@@ -30,6 +30,7 @@
         private lateinit var mapView: MapView
         private lateinit var googleMap: GoogleMap
         private lateinit var fusedLocationClient: FusedLocationProviderClient
+        //private lateinit var fusedLocationClient: FusedLocationProviderClient
 
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,6 +41,7 @@
             mapView.onCreate(savedInstanceState)
 
             mapView.getMapAsync(this)
+            print(mapView.getMapAsync(this));
 
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
