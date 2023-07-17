@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item1"
+
+        android:title="Google Maps"></item>
+
+
+    <item
+        android:id="@+id/menu_item2"
+
+        android:title="Google Place"></item>
+
+    <item
+        android:id="@+id/menu_item3"
+
+        android:title="Email"></item>
+
+
+    <item
+        android:id="@+id/menu_item4"
+
+        android:title="About"></item>
+
+
+
+</menu>

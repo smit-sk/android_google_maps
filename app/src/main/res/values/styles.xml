@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DatePickerDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorAccent">@color/teal</item> <!-- Set the desired accent color -->
+        <item name="android:textColorPrimary">@color/black</item> <!-- Set the desired primary text color -->
+        <item name="android:textColorSecondary">@color/white</item> <!-- Set the desired secondary text color -->
+    </style>
+</resources>
