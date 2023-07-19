@@ -30,7 +30,6 @@
         private lateinit var mapView: MapView
         private lateinit var googleMap: GoogleMap
         private lateinit var fusedLocationClient: FusedLocationProviderClient
-        //private lateinit var fusedLocationClient: FusedLocationProviderClient
 
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -53,6 +52,8 @@
 
             override fun onMapReady(map: GoogleMap) {
                 googleMap = map
+                googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+
 
                 // Check for location permission
                 if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {

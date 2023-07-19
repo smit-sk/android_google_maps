@@ -1,22 +1,13 @@
 package com.example.workingwithgooglemaps
 
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toolbar
 import androidx.fragment.app.Fragment
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapFragment
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 
 class MainActivity : AppCompatActivity()  {
 
@@ -30,7 +21,7 @@ class MainActivity : AppCompatActivity()  {
         if (savedInstanceState == null) {
             replaceFragment(MapsFragment())
         }
-
+        replaceFragment(MapsFragment())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -46,7 +37,7 @@ class MainActivity : AppCompatActivity()  {
                  true
             }
             R.id.menu_item2 -> {
-                // Handle Item 2 click
+                replaceFragment(PlacesFragment())
                  true
             }
             R.id.menu_item3 -> {
