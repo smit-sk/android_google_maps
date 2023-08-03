@@ -22,6 +22,12 @@ class MainActivity : AppCompatActivity()  {
             replaceFragment(MapsFragment())
         }
         replaceFragment(MapsFragment())
+
+        val fragmentA = MapsFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContiner, fragmentA)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -41,11 +47,11 @@ class MainActivity : AppCompatActivity()  {
                  true
             }
             R.id.menu_item3 -> {
-                // Handle Item 3 click
+                replaceFragment(EmailFragment())
                  true
             }
             R.id.menu_item4 -> {
-                // Handle Item 4 click
+                //replaceFragment(AboutFragment())
                  true
             }
             else ->  false

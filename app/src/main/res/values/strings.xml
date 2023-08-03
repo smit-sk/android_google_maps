@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Working with Google Maps</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_desc">The app enables users to explore their surroundings with Google Maps, discover nearby places of interest through Google Places, easily share their current location via prepopulated emails, and learn about the app\'s purpose and student developers through an About section. It also ensures the last used email address is automatically restored for convenience.</string>
     <string name="google_places_api_key">AIzaSyA2brZrarINPiWqnag0spT1P1nwD_klcF4</string>
+
+    <string-array name="names_array">
+        <item>Smit Khokhariya</item>
+        <item>Dhruvin Mulani</item>
+        <item>Dhruv Sagpariya</item>
+        <item>Grishma Dave</item>
+    </string-array>
 </resources>

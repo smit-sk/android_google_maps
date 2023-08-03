@@ -1,5 +1,6 @@
 package com.example.workingwithgooglemaps
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -60,8 +62,7 @@ class PlacesFragment : Fragment(){
                         if (task.isSuccessful && task.result != null) {
                             val placesList = task.result?.placeLikelihoods?.map { it.place }
                             displayPlaces(placesList)
-println(placesList.toString())
-                            Log.d("MD", placesList.toString())
+
                         }
                     }
                 }
@@ -76,7 +77,8 @@ println(placesList.toString())
     }
     private fun displayPlaces(placesList: List<Place>?) {
         val placeNames = placesList?.mapNotNull { it.name } ?: emptyList()
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, placeNames)
+
+        val adapter = PlaceAdapter(requireContext(), placesList ?: emptyList())
         placesListView.adapter = adapter
     }
 
@@ -86,5 +88,21 @@ println(placesList.toString())
         private const val REQUEST_LOCATION_PERMISSION = 100
     }
 
+    private inner class PlaceAdapter(
+        context: Context,
+        private val places: List<Place>
+    ) : ArrayAdapter<Place>(context, R.layout.list_item_place, places) {
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            val itemView = convertView ?: LayoutInflater.from(context)
+                .inflate(R.layout.list_item_place, parent, false)
+
+            val place = places[position]
+            val placeNameTextView = itemView.findViewById<TextView>(R.id.placeNameTextView)
+            placeNameTextView.text = place.name
+
+            return itemView
+        }
+    }
 }
 
