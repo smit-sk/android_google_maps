@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity()  {
                  true
             }
             R.id.menu_item4 -> {
-                //replaceFragment(AboutFragment())
+                replaceFragment(AboutFragment())
                  true
             }
             else ->  false
