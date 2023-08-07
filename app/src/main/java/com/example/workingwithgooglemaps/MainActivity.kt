@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity()  {
         if (requestCode == 2) {
             if (resultCode == Activity.RESULT_OK) {
                 replaceFragment(MapsFragment())
-                //aaa bako chhe, marker add nathi thatu
+
             } else {
                 // Location services are still not enabled, handle accordingly
             }

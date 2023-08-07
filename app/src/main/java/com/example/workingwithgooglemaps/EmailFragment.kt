@@ -35,19 +35,34 @@ class EmailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.sendEmailButton)
-            .setOnClickListener {
-                val emailAddress =
-                    view.findViewById<EditText>(R.id.edt_Email).text.toString().trim()
-                if (isValidEmail(emailAddress)) {
-                    val subject = "Current Location Details"
-                    val body = emailBody()
 
-                    sendEmail(emailAddress, subject, body)
-                } else {
-                    Toast.makeText(requireContext(), "Invalid email address", Toast.LENGTH_SHORT).show()
-                }
+        val emailAddressEditText = view.findViewById<EditText>(R.id.edt_Email)
+
+        val sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val storedEmailAddress = sharedPreferences.getString("Email", null)
+
+        if (!storedEmailAddress.isNullOrEmpty()) {
+            emailAddressEditText.setText(storedEmailAddress)
+        }
+
+        view.findViewById<Button>(R.id.sendEmailButton).setOnClickListener {
+            val emailAddress = emailAddressEditText.text.toString().trim()
+
+            if (isValidEmail(emailAddress)) {
+                val subject = "Current Location Details"
+                val body = emailBody()
+
+                val editor = sharedPreferences.edit()
+                editor.putString("Email", emailAddress)
+                Log.d("Email", emailAddress)
+                editor.apply()
+
+                sendEmail(emailAddress, subject, body)
+            } else {
+                Toast.makeText(requireContext(), "Invalid email address", Toast.LENGTH_SHORT).show()
             }
+        }
+
         view.findViewById<Button>(R.id.backButton_email).setOnClickListener {
             requireActivity().supportFragmentManager.popBackStack()
 
@@ -82,22 +97,5 @@ class EmailFragment : Fragment() {
 
         startActivity(Intent.createChooser(emailIntent, "Send Email"))
     }
-
-
-//    private fun sendEmail(emailAddress: String, subject: String, body: String) {
-//        val intent = Intent(Intent.ACTION_SENDTO)
-//        intent.data = Uri.parse("mailto:")
-//        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(emailAddress))
-//        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
-//        intent.putExtra(Intent.EXTRA_TEXT, body)
-//
-//        if (intent.resolveActivity(requireActivity().packageManager) != null) {
-//            startActivity(intent)
-//        }
-//    }
-
-
-
-
 
 }
